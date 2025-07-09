@@ -9,12 +9,17 @@
 <body>
 <header>
     <div class="header-image-container">
-        <img src="тасик на шапку.jpg" alt="тасик">
-        <div class="header-overlay"></div>
-    </div>
+    <picture>
+        <!-- Вертикальная версия для телефонов -->
+        <source media="(max-width: 768px)" srcset="тасик для шапки тел.jpg">
+        <!-- Горизонтальная для компьютеров -->
+        <img src="тасик для шапки комп.jpg" alt="Тасик">
+    </picture>
+    <div class="header-overlay"></div>
+</div>
     <div class="header-text-bottom">
-        <h1>Меня зовут Тасик</h1>
-        <p>Я пикми кот</p>
+        <h1>Меня зовут Тасик</h2>
+        <h1>Я пикми кот</h1>
     </div>
 </header>
     <main class="container">
