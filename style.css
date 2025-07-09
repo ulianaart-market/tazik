@@ -1,84 +1,29 @@
-body {
-    background-color: white;
-    font-family: sans-serif;
-}
-h1 {
-    color: #000033;
-    font-size: 36px
-}
-h2 {
-    color: #000033;
-    font-size: 34px
-}
-p {
-    color: #000033;
-    font-size: 28px
-}
-
-body {
-
+/* ===== ОБЩИЕ СТИЛИ ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-header {
-    position: relative;
-    height: 80vh;
-    overflow: hidden;
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
-.header-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.header-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.header-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60%;
-    background: linear-gradient(to top, rgba(255,255,255,0.7), transparent);
-    z-index: 1;
-}
-
-.header-text-bottom {
-    position: absolute;
-    bottom: 60px;
-    left: 60px;
-    color: white;
-    z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-.header-text-bottom h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.header-text-bottom p {
-    font-size: 2rem;
-}
-
-
-
-/* ========= ШАПКА САЙТА ========= */
+/* ===== ШАПКА ===== */
 .site-header {
     position: relative;
     height: 80vh;
     overflow: hidden;
+    background: #ccc; /* Фон если фото не загрузится */
 }
 
 .header-img {
@@ -91,84 +36,55 @@ header {
     left: 0;
 }
 
-/* Показываем десктопное фото по умолчанию */
 .desktop-img {
     display: block;
 }
 
-/* Скрываем мобильное фото по умолчанию */
 .mobile-img {
     display: none;
 }
 
-/* Затемнение внизу */
 .header-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 40%;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
     z-index: 1;
 }
 
-/* Текст */
 .header-text {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 40px;
+    left: 40px;
     color: white;
     z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    max-width: 600px;
 }
 
 .header-text h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 15px;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
-@media (max-width: 768px) {
-    .site-header {
-        height: 70vh;
-    }
-    
-    /* Переключаем фото */
-    .desktop-img {
-        display: none;
-    }
-    
-    .mobile-img {
-        display: block;
-    }
-    
-    /* Регулируем позицию для мобильных */
-    .header-img.mobile-img {
-        object-position: top center;
-    }
-    
-    .header-text {
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .header-text h1 {
-        font-size: 1.8rem;
-    }
+.header-text p {
+    font-size: 1.5rem;
 }
-}
-/* Стили для секции "Моя жизнь" */
+
+/* ===== ЗАГОЛОВОК "МОЯ ЖИЗНЬ" ===== */
 .life-section {
-    padding: 60px 0 30px;
-    background: #fff;
+    padding: 80px 0 40px;
+    text-align: center;
 }
 
 .life-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 40px;
+    font-size: 3.5rem;
+    color: #2c3e50;
     position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 .life-title::after {
@@ -177,29 +93,38 @@ header {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
+    width: 120px;
+    height: 5px;
     background: #e74c3c;
+    border-radius: 3px;
 }
 
-/* Стили для контент-блоков */
+/* ===== БЛОКИ С ФОТО И ТЕКСТОМ ===== */
 .content-block {
     display: flex;
-    gap: 40px;
-    margin-bottom: 60px;
     align-items: center;
+    margin-bottom: 100px;
+    gap: 50px;
 }
 
 .content-photo {
     flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+}
+
+.content-photo:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .content-photo img {
     width: 100%;
-    height: 300px;
+    height: 400px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: block;
 }
 
 .content-text {
@@ -208,26 +133,92 @@ header {
 }
 
 .content-text h3 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: #e74c3c;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.content-text h3::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 70px;
+    height: 3px;
+    background: #3498db;
 }
 
 .content-text p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #555;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
 }
 
-/* Класс для чередования блоков */
+/* ЧЕРЕДОВАНИЕ БЛОКОВ */
 .reverse {
     flex-direction: row-reverse;
 }
 
-/* Адаптивность для мобильных */
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 992px) {
+    .header-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .header-text p {
+        font-size: 1.2rem;
+    }
+    
+    .life-title {
+        font-size: 3rem;
+    }
+    
+    .content-text h3 {
+        font-size: 1.8rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .site-header {
+        height: 70vh;
+    }
+    
+    .desktop-img {
+        display: none;
+    }
+    
+    .mobile-img {
+        display: block;
+    }
+    
+    .header-text {
+        bottom: 25px;
+        left: 25px;
+        padding-right: 20px;
+    }
+    
+    .header-text h1 {
+        font-size: 2rem;
+    }
+    
+    .header-text p {
+        font-size: 1.1rem;
+    }
+    
+    .life-section {
+        padding: 60px 0 30px;
+    }
+    
+    .life-title {
+        font-size: 2.5rem;
+    }
+    
     .content-block {
         flex-direction: column;
+        margin-bottom: 70px;
+        gap: 30px;
     }
     
     .reverse {
@@ -239,7 +230,42 @@ header {
         width: 100%;
     }
     
+    .content-text {
+        padding: 0;
+    }
+    
+    .content-text h3 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 480px) {
+    .header-text {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.7rem;
+    }
+    
     .life-title {
         font-size: 2rem;
     }
+    
+    .content-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .content-text p {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ ===== */
+.content-photo img {
+    transition: transform 0.5s;
+}
+
+.content-photo:hover img {
+    transform: scale(1.05);
 }
