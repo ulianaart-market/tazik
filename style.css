@@ -100,13 +100,13 @@ header {
 }
 /* Скрываем мобильное изображение по умолчанию */
 .mobile-header {
-    display: none;
+    display: none   !important;
 }
 
 /* Показываем мобильное изображение только на телефонах */
 @media (max-width: 768px) {
     .desktop-header {
-        display: none;
+        display: none   !important;
     }
     
     .mobile-header {
