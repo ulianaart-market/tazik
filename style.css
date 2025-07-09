@@ -8,7 +8,7 @@ h1 {
 }
 h2 {
     color: #073763;
-    font-size: 32px
+    font-size: 34px
 }
 p {
     color: #073763;
@@ -69,7 +69,7 @@ header {
 }
 
 .header-text-bottom p {
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 
@@ -84,11 +84,11 @@ header {
     }
     
     .header-text-bottom h1 {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
     }
     
     .header-text-bottom p {
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
 }
 
