@@ -73,31 +73,7 @@ header {
 }
 
 
-@media (max-width: 768px) {
-    header {
-        height: 60vh;
-    }
-    
-    .header-text-bottom {
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .header-text-bottom h1 {
-        font-size: 2.5rem;
-    }
-    
-    .header-text-bottom p {
-        font-size: 1.8rem;
-    }
-}
 
-.container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-}
 /* ========= ШАПКА САЙТА ========= */
 .site-header {
     position: relative;
