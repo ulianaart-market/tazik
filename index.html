@@ -3,47 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Познакомтесь с Тасиком!</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тасик — Легендарный Пикми Кот</title>
     <style>
-        /* === ВАЖНАЯ ДИАГНОСТИКА === */
-        .debug {
+        /* ВАЖНО: Удалите этот стиль после проверки! */
+        body:before {
+            content: "Версия: 10.07.2024";
             position: fixed;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,0,0,0.7);
+            top: 0;
+            left: 0;
+            background: red;
             color: white;
-            padding: 10px;
+            padding: 5px;
             z-index: 9999;
-            font-family: monospace;
-            font-size: 14px;
-            border-radius: 5px;
-            display: none; /* Убрать display: none для включения */
+            font-size: 12px;
         }
     </style>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
-    <!-- Блок диагностики - раскомментируйте display:none выше для проверки -->
-    <div class="debug" id="debugInfo">
-        Загрузка изображений:<br>
-        Десктоп: <span id="desktopStatus">❌</span><br>
-        Мобильное: <span id="mobileStatus">❌</span>
-    </div>
-
-    <!-- ШАПКА (ВСЯ МАГИЯ ЗДЕСЬ) -->
+    <!-- ШАПКА С ПРИНУДИТЕЛЬНЫМ ОБНОВЛЕНИЕМ -->
     <header class="site-header">
-        <!-- Для компьютеров -->
-        <img src="desktop-photo.jpg" 
+        <!-- Горизонтальное фото (компьютеры) -->
+        <img src="desktop-photo.jpg?force=1" 
              alt="Тасик" 
              class="header-img desktop-img"
-             id="desktopImg"
-             onload="document.getElementById('desktopStatus').textContent = '✅'">
+             id="desktopPhoto">
         
-        <!-- Для телефонов -->
-        <img src="mobile-photo.jpg" 
+        <!-- Вертикальное фото (телефоны) -->
+        <img src="mobile-photo.jpg?force=1" 
              alt="Тасик" 
              class="header-img mobile-img"
-             id="mobileImg"
-             onload="document.getElementById('mobileStatus').textContent = '✅'">
+             id="mobilePhoto">
         
         <!-- Затемнение -->
         <div class="header-overlay"></div>
@@ -51,33 +46,31 @@
         <!-- Текст -->
         <div class="header-text">
             <h1>Меня зовут Тасик</h1>
-            <p>Я пикми кот</p>
+            <p>Я пикми кот №1 в мире</p>
         </div>
     </header>
 
-    <!-- Остальной контент сайта -->
-    <!-- ... -->
-
-<script>
-    // Автоматическое определение типа устройства
-    function isMobile() {
-        return window.matchMedia("(max-width: 768px)").matches;
-    }
-    
-    // Показываем диагностику только при проблемах
-    window.addEventListener('load', function() {
-        const debugEl = document.getElementById('debugInfo');
-        if (!document.getElementById('desktopImg').complete || 
-            !document.getElementById('mobileImg').complete) {
-            debugEl.style.display = 'block';
-        }
-        
-        // Экстренное сообщение если мобильное изображение не загружено
-        if (isMobile() && !document.getElementById('mobileImg').complete) {
-            debugEl.innerHTML += '<br>⚠️ ТЕЛЕФОН: ОШИБКА ЗАГРУЗКИ!';
-        }
-    });
-</script>
+    <script>
+        // Экстренная диагностика
+        document.addEventListener('DOMContentLoaded', function() {
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            const desktopLoaded = document.getElementById('desktopPhoto').complete;
+            const mobileLoaded = document.getElementById('mobilePhoto').complete;
+            
+            if (!desktopLoaded || !mobileLoaded) {
+                alert(🚨 ОШИБКА ЗАГРУЗКИ!\nДесктоп: ${desktopLoaded ? '✅' : '❌'}\nМобильное: ${mobileLoaded ? '✅' : '❌'});
+            }
+            
+            if (isMobile) {
+                const mobileDisplayed = getComputedStyle(document.getElementById('mobilePhoto')).display !== 'none';
+                if (!mobileDisplayed) {
+                    alert("📱 ТЕЛЕФОН: Мобильное фото скрыто! Принудительно показываю...");
+                    document.getElementById('mobilePhoto').style.display = 'block';
+                    document.getElementById('desktopPhoto').style.display = 'none';
+                }
+            }
+        });
+    </script>
 
 
 
