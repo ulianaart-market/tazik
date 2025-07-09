@@ -1,17 +1,23 @@
-/* ===== ШАПКА ===== */
-/* === ОБНУЛЯЮЩИЕ СТИЛИ === */
+/* ===== СБРОС КЭША ===== */
+/* Добавьте это в САМОЕ НАЧАЛО файла */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    animation: cacheReset 1s; /* Анимация для сброса кэша */
 }
 
-/* === ШАПКА === */
+@keyframes cacheReset {
+    from { opacity: 0.9; }
+    to { opacity: 1; }
+}
+
+/* ===== ШАПКА - ЯДЕРНЫЙ ВАРИАНТ ===== */
 .site-header {
     position: relative;
     height: 80vh;
     overflow: hidden;
-    background: #e0e0e0; /* Серый фон если фото не загрузится */
+    background: linear-gradient(45deg, #ff0000, #0000ff); /* Яркий градиент если фото не загрузится */
 }
 
 .header-img {
@@ -21,6 +27,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    transition: opacity 0.5s;
 }
 
 /* Десктоп по умолчанию */
@@ -31,6 +38,7 @@
 /* Мобильное по умолчанию скрыто */
 .mobile-img {
     display: none;
+    object-position: top center; /* Важно для вертикальных фото */
 }
 
 .header-overlay {
@@ -49,34 +57,41 @@
     left: 40px;
     color: white;
     z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
     max-width: 80%;
 }
 
 .header-text h1 {
     font-size: 3.5rem;
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .header-text p {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-style: italic;
+    color: #ffeb3b;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ (ключевое!) */
+/* МОБИЛЬНАЯ ВЕРСИЯ - ЖЕСТКИЙ ПЕРЕКЛЮЧАТЕЛЬ */
 @media (max-width: 768px) {
     .site-header {
-        height: 70vh;
+        height: 100vh !important; /* Принудительная высота */
     }
     
     .desktop-img {
-        display: none !important; /* Принудительно скрываем */
+        display: none !important; /* Жесткое скрытие */
     }
     
     .mobile-img {
-        display: block !important; /* Принудительно показываем */
-        object-position: top center; /* Фокусировка на верхней части */
+        display: block !important; /* Жесткое отображение */
+        animation: mobileAppear 0.5s forwards;
+    }
+    
+    @keyframes mobileAppear {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     
     .header-text {
@@ -85,11 +100,18 @@
     }
     
     .header-text h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
     
     .header-text p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+    }
+}
+
+/* ЭКСТРЕННЫЙ СТИЛЬ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 768px) and (orientation: portrait) {
+    .mobile-img {
+        object-position: 50% 30% !important; /* Центрирование вертикальных фото */
     }
 }
 
