@@ -1,26 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Познакомтесь с Тасиком!</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Тасик — Пикми Кот</title>
+    <style>
+        /* === ВАЖНАЯ ДИАГНОСТИКА === */
+        .debug {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,0,0,0.7);
+            color: white;
+            padding: 10px;
+            z-index: 9999;
+            font-family: monospace;
+            font-size: 14px;
+            border-radius: 5px;
+            display: none; /* Убрать display: none для включения */
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
+    <!-- Блок диагностики - раскомментируйте display:none выше для проверки -->
+    <div class="debug" id="debugInfo">
+        Загрузка изображений:<br>
+        Десктоп: <span id="desktopStatus">❌</span><br>
+        Мобильное: <span id="mobileStatus">❌</span>
+    </div>
+
+    <!-- ШАПКА (ВСЯ МАГИЯ ЗДЕСЬ) -->
+    <header class="site-header">
+        <!-- Для компьютеров -->
+        <img src="desktop-photo.jpg" 
+             alt="Тасик" 
+             class="header-img desktop-img"
+             id="desktopImg"
+             onload="document.getElementById('desktopStatus').textContent = '✅'">
+        
+        <!-- Для телефонов -->
+        <img src="mobile-photo.jpg" 
+             alt="Тасик" 
+             class="header-img mobile-img"
+             id="mobileImg"
+             onload="document.getElementById('mobileStatus').textContent = '✅'">
+        
+        <!-- Затемнение -->
+        <div class="header-overlay"></div>
+        
+        <!-- Текст -->
+        <div class="header-text">
+            <h1>Меня зовут Тасик</h1>
+            <p>Я пикми кот</p>
+        </div>
+    </header>
+
+    <!-- Остальной контент сайта -->
+    <!-- ... -->
+
+<script>
+    // Автоматическое определение типа устройства
+    function isMobile() {
+        return window.matchMedia("(max-width: 768px)").matches;
+    }
+    
+    // Показываем диагностику только при проблемах
+    window.addEventListener('load', function() {
+        const debugEl = document.getElementById('debugInfo');
+        if (!document.getElementById('desktopImg').complete || 
+            !document.getElementById('mobileImg').complete) {
+            debugEl.style.display = 'block';
+        }
+        
+        // Экстренное сообщение если мобильное изображение не загружено
+        if (isMobile() && !document.getElementById('mobileImg').complete) {
+            debugEl.innerHTML += '<br>⚠️ ТЕЛЕФОН: ОШИБКА ЗАГРУЗКИ!';
+        }
+    });
+</script>
+
+
+
 
     
-<body>
-<header class="site-header">
-    <!-- Для компьютеров -->
-    <img src="tasik-komp.jpg" alt="Тасик" class="header-img desktop-img">
-    
-    <!-- Для телефонов -->
-    <img src="tasik-phone.jpg" alt="Тасикк" class="header-img mobile-img">
-    
-    <!-- Затемнение и текст -->
-    <div class="header-overlay"></div>
-    <div class="header-text">
-        <h1>Меня зовут Тасик</h1>
-        <p>Я пикми кот</p>
-    </div>
-</header>
     <!-- Заголовок "Моя жизнь" -->
 <section class="life-section">
     <div class="container">
