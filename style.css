@@ -1,45 +1,34 @@
-/* ===== ОБЩИЕ СТИЛИ ===== */
+/* ===== ШАПКА ===== */
+/* === ОБНУЛЯЮЩИЕ СТИЛИ === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
 }
 
-body {
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ===== ШАПКА ===== */
+/* === ШАПКА === */
 .site-header {
     position: relative;
     height: 80vh;
     overflow: hidden;
-    background: #ccc; /* Фон если фото не загрузится */
+    background: #e0e0e0; /* Серый фон если фото не загрузится */
 }
 
 .header-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
 }
 
+/* Десктоп по умолчанию */
 .desktop-img {
     display: block;
 }
 
+/* Мобильное по умолчанию скрыто */
 .mobile-img {
     display: none;
 }
@@ -60,18 +49,70 @@ body {
     left: 40px;
     color: white;
     z-index: 2;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-    max-width: 600px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    max-width: 80%;
 }
 
 .header-text h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .header-text p {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-style: italic;
 }
+
+/* МОБИЛЬНАЯ ВЕРСИЯ (ключевое!) */
+@media (max-width: 768px) {
+    .site-header {
+        height: 70vh;
+    }
+    
+    .desktop-img {
+        display: none !important; /* Принудительно скрываем */
+    }
+    
+    .mobile-img {
+        display: block !important; /* Принудительно показываем */
+        object-position: top center; /* Фокусировка на верхней части */
+    }
+    
+    .header-text {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .header-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header-text p {
+        font-size: 1.3rem;
+    }
+}
+
+/* ===== ОБЩИЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 
 /* ===== ЗАГОЛОВОК "МОЯ ЖИЗНЬ" ===== */
 .life-section {
